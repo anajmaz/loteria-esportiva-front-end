@@ -236,6 +236,8 @@ input[type=number]::-webkit-inner-spin-button {
   justify-content: center;
   align-items: center;
   gap: 1vw;
+  width: 100vw;
+  flex-wrap: wrap;
 }
 
 .winners-table-content-value {
@@ -244,6 +246,11 @@ input[type=number]::-webkit-inner-spin-button {
   color: #88f709;
   margin-bottom: 1vw;
 }
+
+.winners-table-content-item {
+  width: 16vw;
+}
+
 
 @keyframes slideInFromLeft {
   0% {

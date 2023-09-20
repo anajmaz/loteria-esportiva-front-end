@@ -121,10 +121,12 @@ fetch('../config.json')
 
       const todosTimesApostadosVenceram = timesVencedores.every(time => timesSelecionados.includes(time));
 
-     
-      console.log(timesSelecionados.length);
-      console.log(apostas.length);
-      if (!(timesSelecionados.length + 1 === apostas.length)) {
+      const resultadoFiltrado = apostas.map(aposta => aposta >= 1).filter(Boolean);
+      const tamanhoDoArrayFiltrado = resultadoFiltrado.length;
+      
+      console.log(timesSelecionados.length + 1);
+
+      if (!(timesSelecionados.length === tamanhoDoArrayFiltrado)) {
         alert('Você precisa apostar em todos os times para poder participar um valor superior a 0 !');
       } else if (!timesSelecionados.every(time => time === "") && apostas.map(aposta => aposta > 0)) {
         const winnersTable = document.querySelector('.winners-table');

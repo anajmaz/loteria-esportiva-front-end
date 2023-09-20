@@ -1,6 +1,21 @@
 {
   "RandomWinners": false,
-  "Winners": ["Time A", "Time AB"],
+  "Winners": [
+    "LOUD",
+    "vitimas do rdo",
+    "Peito Infinity",
+    "Keyd Stars",
+    "MegaZord",
+    "Cardume",
+    "Os cara cego",
+    "AJF E-Sports",
+    "Liberty",
+    "HACKERS",
+    "Ultimate",
+    "undef1ned team",
+    "Stellae Gaming",
+    "Os Guri da Geral do Gremio"
+  ],
   "multiplier": 1.5,
   "default_logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
   "jogos": [
@@ -8,15 +23,13 @@
       "id": 1,
       "times": [
         {
-          "id": 22,
-          "time": "Time A",
-          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "time": "LOUD",
+          "logo": "https://owcdn.net/img/62bbec8dc1b9f.png",
           "active": false
         },
         {
-          "id": 11,
-          "time": "Time B",
-          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "time": "FURIA",
+          "logo": "https://owcdn.net/img/632be843b7d51.png",
           "active": false
         }
       ]
@@ -25,15 +38,193 @@
       "id": 2,
       "times": [
         {
-          "id": 223,
-          "time": "Time AB",
+          "time": "vitimas do rdo",
           "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
           "active": false
         },
         {
-          "id": 114,
-          "time": "Time BC",
+          "time": "MIXX",
           "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "times": [
+        {
+          "time": "Peito Infinity",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "time": "00Nation",
+          "logo": "https://owcdn.net/img/64300279396c3.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "times": [
+        {
+          "time": "Keyd Stars",
+          "logo": "https://owcdn.net/img/636c7e9c014ab.png",
+          "active": false
+        },
+        {
+          "time": "ODDIK",
+          "logo": "https://owcdn.net/img/62871aa930ce4.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "times": [
+        {
+          "time": "MegaZord",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "time": "Top Gun",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "times": [
+        {
+          "time": "Cardume",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "time": "RED Canids",
+          "logo": "https://owcdn.net/img/63876c258b1e3.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "times": [
+        {
+          "time": "Os cara cego",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "time": "RD E-SPORTS",
+          "logo": "https://owcdn.net/img/61eb78b0dbf8f.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "times": [
+        {
+          "time": "AJF E-Sports",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "time": "os ponta firme",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "times": [
+        {
+          "time": "Liberty",
+          "logo": "https://owcdn.net/img/60cecd6a853ad.png",
+          "active": false
+        },
+        {
+          "time": "timberknick",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "times": [
+        {
+          "time": "HACKERS",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "time": "Smoke Troop",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "times": [
+        {
+          "time": "Ultimate",
+          "logo": "https://owcdn.net/img/639546ee530d5.png",
+          "active": false
+        },
+        {
+          "time": "JNS Gaming",
+          "logo": "https://owcdn.net/img/625b89ee74982.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "times": [
+        {
+          "time": "undef1ned team",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "time": "SuperNova e-Team",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "times": [
+        {
+          "time": "Stellae Gaming",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "time": "Team Liquid Brazil",
+          "logo": "https://owcdn.net/img/640c381f0603f.png",
+          "active": false
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "times": [
+        {
+          "time": "Os Guri da Geral do Gremio",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "time": "TotalePRO",
+          "logo": "https://owcdn.net/img/63954830c1054.png",
           "active": false
         }
       ]
