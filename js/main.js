@@ -132,6 +132,9 @@ fetch('../config.json')
         const winnersTable = document.querySelector('.winners-table');
         winnersTable.style.display = 'flex';
 
+        const deleteButtonBet = document.querySelector('.button-bet');
+        deleteButtonBet.style.display = 'none';
+
         const winnersTableContent = document.querySelector('.winners-table-content');
 
         console.log(timesVencedores);
