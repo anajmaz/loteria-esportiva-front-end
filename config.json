@@ -1,30 +1,42 @@
 {
   "RandomWinners": false,
-  "Winners": ["Time A", "Time C", "Time E"],
+  "Winners": ["Time A", "Time AB"],
   "multiplier": 1.5,
   "default_logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
   "jogos": [
     {
       "id": 1,
-      "time": "Time A",
-      "adversario": "Time B",
-      "active": false,
-      "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
-      "bet": 0
+      "times": [
+        {
+          "id": 22,
+          "time": "Time A",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "id": 11,
+          "time": "Time B",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        }
+      ]
     },
     {
       "id": 2,
-      "time": "Time C",
-      "adversario": "Time D",
-      "active": false,
-      "bet": 0
-    },
-    {
-      "id": 3,
-      "time": "Time E",
-      "adversario": "Time F",
-      "active": false,
-      "bet": 0
+      "times": [
+        {
+          "id": 223,
+          "time": "Time AB",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        },
+        {
+          "id": 114,
+          "time": "Time BC",
+          "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+          "active": false
+        }
+      ]
     }
   ]
 }

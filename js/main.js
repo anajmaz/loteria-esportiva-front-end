@@ -12,62 +12,68 @@ fetch('../config.json')
 
     var apostas = [];
 
-    configData.jogos.forEach(jogo => {
-      const homeTeamDiv = createTeamDiv(jogo.time, jogo.logo);
-      const awayTeamDiv = createTeamDiv(jogo.adversario, jogo.logo);
+    configData.jogos.map((jogo) => {
+      const gameDiv = document.createElement('div');
       const versusSpan = document.createElement('span');
 
       versusSpan.classList.add('span-gray');
       versusSpan.textContent = "vs";
+
+      valorantTeams.appendChild(gameDiv);
 
       const betInput = document.createElement('input');
       betInput.classList.add('bet-quantity');
       betInput.type = 'number';
       betInput.name = 'bet-quantity';
       betInput.placeholder = '0';
+      betInput.min = 0;
+      betInput.dataset.valorAposta = jogo.valorAposta;
 
-      betInput.dataset.valorAposta = jogo.valor_aposta;
-
-      const gameDiv = document.createElement('div');
       gameDiv.classList.add('team');
 
-      gameDiv.appendChild(homeTeamDiv);
-      gameDiv.appendChild(versusSpan);
-      gameDiv.appendChild(awayTeamDiv);
+      const homeTeamDiv = createTeamDiv(jogo.times[0].time, jogo.times[0].logo);
+      const awayTeamDiv = createTeamDiv(jogo.times[1].time, jogo.times[1].logo);
+      
+      jogo.times.map((time, index) => {
+        gameDiv.appendChild(homeTeamDiv);
+        gameDiv.appendChild(versusSpan);
+        gameDiv.appendChild(awayTeamDiv);
 
-      if (jogo.active) {
-        homeTeamDiv.classList.add('active');
-        gameDiv.appendChild(betInput);
-      }
+        homeTeamDiv.addEventListener('click', () => {
+          if (index === 0) {
+            homeTeamDiv.classList.add('active');
+            awayTeamDiv.classList.remove('active');
+            jogo.times[index].active = true;
+            jogo.times[1].active = false;
+          }
 
-      valorantTeams.appendChild(gameDiv);
+          if (time.active) gameDiv.appendChild(betInput);
 
-      homeTeamDiv.addEventListener('click', () => {
-        jogo.active = !jogo.active;
-        homeTeamDiv.classList.add('active');
-        awayTeamDiv.classList.remove('active');
+          updateButtonBetState();
+        });
 
-        if (jogo.active) gameDiv.appendChild(betInput);
+        awayTeamDiv.addEventListener('click', () => {
+          if (index === 1) {
+            awayTeamDiv.classList.add('active');
+            homeTeamDiv.classList.remove('active');
+            jogo.times[index].active = true;
+            jogo.times[0].active = false;
+            console.log(jogo.times[index].active);
+          }
 
-        updateButtonBetState();
-      });
+          if (time.active) gameDiv.appendChild(betInput);
 
-      awayTeamDiv.addEventListener('click', () => {
-        jogo.active = !jogo.active;
-        awayTeamDiv.classList.add('active');
-        homeTeamDiv.classList.remove('active');
+          updateButtonBetState();
+        });
 
-        if (jogo.active) gameDiv.appendChild(betInput)
-
-        updateButtonBetState();
-      });
-
-      betInput.addEventListener('input', () => {
-        const aposta = parseFloat(betInput.value) || 0;
-        apostas[jogo.id] = aposta
-        updateButtonBetState();
+        betInput.addEventListener('input', () => {
+          const aposta = parseFloat(betInput.value) || 0;
+          apostas[jogo.id] = aposta
+          updateButtonBetState();
+        });
       });
     });
+
 
     function createTeamDiv(teamName, teamLogoSrc) {
       const teamDiv = document.createElement('div');
@@ -102,54 +108,69 @@ fetch('../config.json')
       const timesVencedores = configData.Winners
     
       if (configData.RandomWinners) {
-        configData.jogos.forEach(jogo => {
-          const aposta = apostas[jogo.id];
-      
-
-          const vencedor = aposta > 0 && Math.random() > 0.5 ? jogo.time : jogo.adversario;
-          console.log(vencedor);
-          timesVencedores.push(vencedor);
-        });
+        configData.jogos.times.forEach(time => {
+          time.active = false;
+        })
       }
 
       const valorTotalApostado = apostas.reduce((total, aposta) => total + aposta, 0);
-    
-      const timesApostados = configData.jogos.map(jogo => jogo.active ? jogo.time : "");
-  
-      const todosTimesApostadosVenceram = timesApostados.every(time => timesVencedores.includes(time));
 
-      if (todosTimesApostadosVenceram) {
+      const timesSelecionados = configData.jogos.map(jogo => jogo.times.find(time => time.active).time);
+
+      console.log(timesSelecionados);
+
+      const todosTimesApostadosVenceram = timesVencedores.every(time => timesSelecionados.includes(time));
+
+     
+      console.log(timesSelecionados.length);
+      console.log(apostas.length);
+      if (!(timesSelecionados.length + 1 === apostas.length)) {
+        alert('Você precisa apostar em todos os times para poder participar um valor superior a 0 !');
+      } else if (!timesSelecionados.every(time => time === "") && apostas.map(aposta => aposta > 0)) {
         const winnersTable = document.querySelector('.winners-table');
         winnersTable.style.display = 'flex';
 
         const winnersTableContent = document.querySelector('.winners-table-content');
+
+        console.log(timesVencedores);
         timesVencedores.forEach((time, index) => {
-          const winnersTableContentItem = document.createElement('div');
-          winnersTableContentItem.classList.add('winners-table-content-item');
+          const winnerDiv = document.createElement('div');
+          winnerDiv.classList.add('winners-table-content-item');
 
           const winnersTableContentItemPlace = document.createElement('div');
           winnersTableContentItemPlace.classList.add('winners-table-content-item-place');
-          winnersTableContentItemPlace.textContent = `${index + 1}º`;
+          winnersTableContentItemPlace.textContent = `${index + 1}º ${timesVencedores[index]}`;
 
           const winnersTableContentItemTeam = document.createElement('div');
           winnersTableContentItemTeam.classList.add('winners-table-content-item-team');
 
+          const winnerName = document.createElement('span');
+          winnerName.classList.add('winner-name');
+          winnerName.textContent = time;
+
           const winnersTableContentItemTeamImage = document.createElement('img');
-          winnersTableContentItemTeamImage.src = configData.jogos.find(jogo => jogo.time === time).logo ?? configData.default_logo;
+          winnersTableContentItemTeamImage.src = configData.jogos[index].times.find(time => time.time === timesVencedores[index]).logo || configData.default_logo;
           winnersTableContentItemTeamImage.alt = time;
 
           winnersTableContentItemTeam.appendChild(winnersTableContentItemTeamImage);
 
-          winnersTableContentItem.appendChild(winnersTableContentItemPlace);
-          winnersTableContentItem.appendChild(winnersTableContentItemTeam);
-          const winnersTableContentValue = document.querySelector('.winners-table-content-value');
-          winnersTableContentValue.textContent = `R$ ${valorTotalApostado}`;
+          winnerDiv.appendChild(winnersTableContentItemPlace);
+          winnerDiv.appendChild(winnersTableContentItemTeam);
 
-          winnersTableContent.appendChild(winnersTableContentItem);
+          const winnersTableContentValue = document.querySelector('.winners-table-content-value');
+          
+          if (todosTimesApostadosVenceram) {
+            winnersTableContentValue.style.color = 'green';
+            winnersTableContentValue.textContent = `R$ ${valorTotalApostado * configData.multiplier}`;
+          } else {
+            winnersTableContentValue.style.color = 'red';
+            winnersTableContentValue.textContent = `Perdeu R$ ${valorTotalApostado}`;
+          }
+
+          winnersTableContent.appendChild(winnerDiv);
         });
+      } else {
+        alert('Aposte em todos os Times para poder participar!');
       }
     });
   })
-  .catch(error => {
-    console.error('Erro:', error);
-  });
