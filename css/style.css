@@ -1,0 +1,255 @@
+body {
+    background: url(../assets/background.png);
+    background-size: 105% 105%;
+    background-repeat: none;
+    background-attachment: fixed;
+    background-position: 0%;
+    font-family: 'Poppins', sans-serif;
+    font-size: .6vw;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    user-select: none;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1%;
+    margin-bottom: .2%;
+    font-size: 1.2vw;
+    text-transform: uppercase;
+}
+
+.valorant-teams {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 79vh;
+    gap: 4vw;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+
+    /* smooth scroll */
+    scroll-behavior: smooth;
+}
+
+/* webkit scroll display none */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #ffffff;
+  position: relative;
+
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+.bet-quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -27%;
+  padding: 0 1vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2.5vw;
+  background-color: rgba(30,36,51,0.8);
+  color: #ffffff;
+  outline: none;
+  border: none;
+  border-radius: .2vw;
+  
+  font-family: 'Poppins', sans-serif;
+}
+
+.bet-quantity span {
+  font-size: 1.2vw;
+  font-weight: 600;
+}
+
+.bet-quantity:hover {
+  background: rgba(30,36,51,1);
+  color: #fff;
+  transition: .3s;
+}
+
+.bet-quantity::before {
+  content: 'R$';
+  position: absolute;
+  left: 1vw;
+  font-size: 1.2vw;
+  font-weight: 600;
+}
+
+/* remove arrows input */
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} 
+
+.team-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: .5vw;
+  gap: .6rem;
+  min-height: 10vh;
+  flex-shrink: 0;
+  
+  border-radius: 1vw;
+  background-color: rgba(30,36,51,0.8);
+}
+
+.active {
+  background: #2aaa5d;
+  color: #fff;
+}
+
+.team-line:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  color: #fff;
+}
+
+.team-line h2 {
+  margin-bottom: -.8vw;
+}
+
+.span-gray {
+  color: rgba(87, 104, 148, 0.521);
+  font-style: italic;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 4vw;
+  margin-right: 1vw;
+}
+
+.logo {
+  width: 8vw;
+  object-fit: contain;
+}
+
+.odd:hover {
+  cursor: pointer;
+  background: #2aaa5d;
+  color: #fff;
+}
+
+.button-add-team {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  bottom: 1vw;
+  right: 1vw;
+
+  width: 3.6vw;
+  height: 3.6vw;
+
+  gap: 1vw;
+  border-radius: 1vw;
+  background-color: rgba(30,36,51,0.8);
+  color: rgba(255, 255, 255, 0.911);
+  font-size: 3vw;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.button-add-team:hover {
+  cursor: pointer;
+  background: rgba(30,36,51,1);
+  color: #fff;
+  transition: .3s;
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.button-bet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+
+  bottom: 1vw;
+  left: 50%;
+  transform: translateX(-50%);
+
+  padding: .1vw 1.6vw;
+  gap: 1vw;
+  border-radius: 1vw;
+  background-color: rgba(30,36,51,0.8);
+  color: rgba(255, 255, 255, 0.911);
+  font-size: 2.2vw;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.button-bet:hover {
+  cursor: pointer;
+  background: rgba(30,36,51,1);
+  color: #fff;
+  transition: .3s;
+  opacity: 1;
+}
+
+.winners-table {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 1vw;
+  padding: .5vw 2vw;
+  border-radius: 1vw;
+  background-color: rgba(30,36,51,0.8);
+  color: rgba(255, 255, 255, 0.911);
+  font-size: 1.2vw;
+  text-transform: uppercase;
+  transition: .3s;
+}
+
+.winners-table-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vw;
+}
+
+.winners-table-content-value {
+  font-size: 2vw;
+  font-weight: 600;
+  color: #88f709;
+  margin-bottom: 1vw;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

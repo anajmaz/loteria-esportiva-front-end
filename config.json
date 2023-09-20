@@ -1,0 +1,30 @@
+{
+  "RandomWinners": false,
+  "Winners": ["Time A", "Time C", "Time E"],
+  "multiplier": 1.5,
+  "default_logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+  "jogos": [
+    {
+      "id": 1,
+      "time": "Time A",
+      "adversario": "Time B",
+      "active": false,
+      "logo": "https://www.vlr.gg/img/vlr/tmp/vlr.png",
+      "bet": 0
+    },
+    {
+      "id": 2,
+      "time": "Time C",
+      "adversario": "Time D",
+      "active": false,
+      "bet": 0
+    },
+    {
+      "id": 3,
+      "time": "Time E",
+      "adversario": "Time F",
+      "active": false,
+      "bet": 0
+    }
+  ]
+}
