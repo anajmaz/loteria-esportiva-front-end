@@ -135,19 +135,14 @@ fetch('../config.json')
         const deleteButtonBet = document.querySelector('.button-bet');
         deleteButtonBet.style.display = 'none';
 
-        const winnersTableContent = document.querySelector('.winners-table-content');
+        const winnersTableContent = document.querySelector('.winner-table');
+        const loseTableContent = document.querySelector('.lose-table');
 
         console.log(timesVencedores);
         timesVencedores.forEach((time, index) => {
-          const winnerDiv = document.createElement('div');
-          winnerDiv.classList.add('winners-table-content-item');
-
-          const winnersTableContentItemPlace = document.createElement('div');
-          winnersTableContentItemPlace.classList.add('winners-table-content-item-place');
-          winnersTableContentItemPlace.textContent = `${index + 1}º ${timesVencedores[index]}`;
-
+          // winnersTableContentWinners adicione apenas os times que ganharam
           const winnersTableContentItemTeam = document.createElement('div');
-          winnersTableContentItemTeam.classList.add('winners-table-content-item-team');
+          winnersTableContentItemTeam.classList.add('game');
 
           const winnerName = document.createElement('span');
           winnerName.classList.add('winner-name');
@@ -158,21 +153,44 @@ fetch('../config.json')
           winnersTableContentItemTeamImage.alt = time;
 
           winnersTableContentItemTeam.appendChild(winnersTableContentItemTeamImage);
+          winnersTableContentItemTeam.appendChild(winnerName);
 
-          winnerDiv.appendChild(winnersTableContentItemPlace);
-          winnerDiv.appendChild(winnersTableContentItemTeam);
+          ////////////////////////////////////////////////////////////////////////////
+          const loseTableContentItemTeam = document.createElement('div');
+          loseTableContentItemTeam.classList.add('game');
 
-          const winnersTableContentValue = document.querySelector('.winners-table-content-value');
+          const loseName = document.createElement('div');
+          loseName.classList.add('game-name');
+          loseName.textContent = timesSelecionados[index];
+
+          const loseTableContentItemTeamImage = document.createElement('img');
+          loseTableContentItemTeamImage.src = configData.jogos[index].times.find(time => time.time === timesSelecionados[index]).logo || configData.default_logo;
+          loseTableContentItemTeamImage.alt = timesSelecionados[index];
+
+          loseTableContentItemTeam.appendChild(loseTableContentItemTeamImage);
+          loseTableContentItemTeam.appendChild(loseName);
+
+          ////////////////////////////////////////////////////////////////////////////
+
+          const winnersTableFooterContentLeftTitle = document.querySelector('.preview');
+          winnersTableFooterContentLeftTitle.style.color = 'green';
+          winnersTableFooterContentLeftTitle.textContent = `R$ ${valorTotalApostado * configData.multiplier}`;
           
+          const winnersTableFooterContentRightTitle = document.querySelector('.previewTitle');
+          const winnersTableFooterContentRightValue = document.querySelector('.previewValue');
+
           if (todosTimesApostadosVenceram) {
-            winnersTableContentValue.style.color = 'green';
-            winnersTableContentValue.textContent = `R$ ${valorTotalApostado * configData.multiplier}`;
+            winnersTableFooterContentRightValue.style.color = 'green';
+            winnersTableFooterContentRightTitle.textContent = 'Quanto Ganhou';
+            winnersTableFooterContentRightValue.textContent = `R$ ${valorTotalApostado * configData.multiplier}`;
           } else {
-            winnersTableContentValue.style.color = 'red';
-            winnersTableContentValue.textContent = `Perdeu R$ ${valorTotalApostado}`;
+            winnersTableFooterContentRightValue.style.color = 'red';
+            winnersTableFooterContentRightTitle.textContent = 'Quanto Perdeu';
+            winnersTableFooterContentRightValue.textContent = `R$ ${valorTotalApostado}`;
           }
 
-          winnersTableContent.appendChild(winnerDiv);
+          winnersTableContent.appendChild(winnersTableContentItemTeam);
+          loseTableContent.appendChild(loseTableContentItemTeam);
         });
       } else {
         alert('Aposte em todos os Times para poder participar!');
